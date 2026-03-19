@@ -1,20 +1,20 @@
-# cloudflared-helper (English)
+<h1 id="cloudflared-helper-en">cloudflared-helper (English)</h1>
 
 Cloudflare configuration and port-forwarding documentation repository for LCMD scenarios.
 
-## Entry Points
+<h2 id="entry-points">Entry Points</h2>
 
 - [Global docs index](docs/README.md)
 - [English docs index](docs/EN/README.md)
 - [中文文档索引](docs/ZH/README.md)
 
-## Recommended Reading Order
+<h2 id="recommended-reading-order">Recommended Reading Order</h2>
 
 1. [Cloudflare Configuration Guide and Port Forwarding Techniques (main flow)](docs/EN/guides/cloudflare-setup-and-port-forwarding.md)
 2. [Cloudflare Forwarding MySQL / PostgreSQL (TCP scenario)](docs/EN/guides/cloudflare-mysql-postgresql.md)
 3. [Local Area Network Port Forwarding Tutorial](docs/EN/guides/lan-port-forwarding.md)
 
-## FAQ: Tunnel Degradation
+<h2 id="faq-tunnel-degradation">FAQ: Tunnel Degradation</h2>
 
 If tunnel degradation occurs, set the Cloudflare app environment variable on the client and restart:
 
