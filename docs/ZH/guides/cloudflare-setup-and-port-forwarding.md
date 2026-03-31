@@ -109,11 +109,11 @@ nslookup -qt=ns 你的域名
 
 ![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/63008548-e826-464d-a721-03660478bed8.png "image.png")
 
-![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/27988af4-969d-47ac-bc98-6413fa54e1f9.png "image.png")
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/12057a8c-abcd-4077-a0c7-82c1bc60178e.png "image.png")
 
 - 粘贴到微服的这个窗口，点击保存——> 启动
 
-![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/2836dec1-e408-4de0-8001-bfaf50ee762e.png "image.png")
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/f861a3c9-c3d9-460e-a53c-b83fa7fce1af.png "image.png")
 
 - 再次点击侧边导航栏“Tunnel”可以看出隧道连接状态正常
 
@@ -127,36 +127,29 @@ nslookup -qt=ns 你的域名
 
 ### 2、配置应用转发
 
-#### 1、获取应用端口
-
-下拉端口就可以获取了
-
-![a6aace8f82bbd2374a77235eb09ca5bb](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/202506261623480.png)
-
-#### 2、配置转发
+#### 1、获取应用端口配置转发
 
 - 打开微服——> 下载“局域网端口转发工具”应用“——> 打开——> 添加映射规则——> 开始填写
 - **（需注意！！！一个应用包含前端后端等其他组件，用户需要选择需要映射出去的服务端口）**
 
 ```ABAP
 注意事项：
-左侧：
-局域网出口类型：选择“微服虚拟网卡（仅微服应用容器内可访问）”
-微服虚拟网卡：“host.lzcapp” 端口：尽量与需要映射的端口一致
 右侧：
+局域网出口类型：选择“微服虚拟网卡（仅微服应用容器内可访问）”
+微服虚拟网卡：“host.lzcapp”
+出口地址：默认
+端口：尽量与需要映射的端口一致
 转发目标类型：微服应用
 微服应用：选择需要映射的应用（这一有个注意点：这个下拉应用选项中需要选Running的）server tcp 端口（这三个根据自身服务来）
 
 添加完成之后点击“测速连接”确保能正常——>创建
 ```
 
-![PixPin_2026-03-31_11-49-49.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/5c9ea086-2909-4261-ba97-41489187b518.png "PixPin_2026-03-31_11-49-49.png")
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/e367025e-94ff-4cb5-8c50-1352168298e6.png "image.png")
 
-![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/d927a9f2-6c7c-47fe-ba71-f0092133e103.png "image.png")
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/1729a2a5-7a7d-4fa6-bf48-7c28f4aed89a.png "image.png")
 
-![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/7d62bcc0-7b82-4f69-b923-d19d6339f466.png "image.png")
-
-![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/28ebcf4f-18aa-4401-a9d6-b3c8fcec4a8c.png "image.png")
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/f14b8565-4fb0-4090-b365-acc08baa2e2e.png "image.png")
 
 #### 3、测试 Cloudflare 应用与转发应用是否正常访问
 
