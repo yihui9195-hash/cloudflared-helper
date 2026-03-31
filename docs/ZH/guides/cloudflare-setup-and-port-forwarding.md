@@ -1,16 +1,16 @@
-# CloudFlare 配置指南和端口转发技巧
+# CloudFlare 配置指南和端口转发技巧（本攻略出现两个域名不影响您的正常使用）
 
 [TOC]
 
-> **需求背景：用户需把微服内的应用通过域名托管和端口转发的方式，实现公网访问微服内的应用，实现下图界面**
+> **需求背景：用户需把微服内的应用通过域名托管和端口转发的方式，实现公网访问微服内的应用，实现下图界面**（可通过自己的域名进行访问微服务内的应用）
 
 ![image-20250313172017688](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313172017827.png?imageSlim) 
 
 ## 具体实现
 
-## 1、登录 CloudFlare
+## 1、登录 CloudFlare（网址：https://www.cloudflare-cn.com/enterprise/（国内）(https://www.cloudflare.com/zh-cn/（国际））
 
-- 在微服上打开应用商店——> 下载 CloudFlared 并打开——> 点击右上角切换语言“中文简体”——> 点击底部“ZeroTrust 仪表盘”
+- 在微服上打开应用商店——> 下载 CloudFlared UI 并打开——> 点击右上角切换语言“中文简体”——>进行网站登录
 
 <img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313092316870.png?imageSlim" alt="image-20250313092316818" style="zoom: 33%;" />  
 
@@ -46,11 +46,19 @@
 
 <img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313101515942.png?imageSlim" alt="image-20250313101515836" style="zoom: 33%;" />  
 
-- 回到您注册域名的平台，找到域名管理界面——> 修改注册资料——> 把 DNS 服务器换成上一步复制的域名——> 确定提交
+- 回到您注册域名的平台（比如阿里云腾讯云等这里展示阿里具体流程），找到域名管理界面——> 修改注册资料——> 把 DNS 服务器换成上一步复制的域名——> 确定提交
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313101950671.png?imageSlim" alt="image-20250313101950604" style="zoom: 33%;" /> 
+![image-20260331094933073](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331094933073.png)
 
- 
+ ![image-20260331095026358](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331095026358.png)
+
+![image-20260331095106389](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331095106389.png)
+
+![image-20260331095154800](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331095154800.png)
+
+![image-20260331095450163](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331095450163.png)
+
+![image-20260331095725836](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331095725836.png)
 
 ### 2、等待生效
 
@@ -61,9 +69,13 @@
 dig NS 域名
 #如果一直出不来可以更换一下主机的DNS;如：223.5.5.5；8.8.8.8等
 #在ANSWER SECTION处产生新配的DNS就证明成功了
+#在Windows上
+nslookup -qt=ns 你的域名
 ```
 
 <img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313112407970.png?imageSlim" alt="image-20250313112407897" style="zoom:50%;" /> 
+
+![image-20260331100146130](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331100146130.png)
 
 ### 3、托管完成
 
@@ -97,15 +109,21 @@ dig NS 域名
 
 - 选择 Debin——> 复制左边“如果您的计算机上已安装 cloudflared：”内容
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313142835007.png?imageSlim" alt="image-20250313142834917" style="zoom:50%;" /> 
+![image-20260331100623780](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331100623780.png)
+
+![image-20260331101146312](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331101146312.png)
 
 - 粘贴到微服的这个窗口，点击保存——> 启动
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313142901240.png?imageSlim" alt="image-20250313142901177" style="zoom:50%;" /> 
+![image-20260331100846788](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331100846788.png)
 
 - 再次点击侧边导航栏“Tunnel”可以看出隧道连接状态正常
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313143255411.png?imageSlim" alt="image-20250313143255321" style="zoom:50%;" /> 
+![image-20260331101421636](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331101421636.png)
+
+![image-20260331102112681](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331102112681.png)
+
+![image-20260331102533174](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331102533174.png)
 
 ### 2、配置应用转发
 
@@ -132,7 +150,9 @@ dig NS 域名
 添加完成之后点击“测速连接”确保能正常——>创建
 ```
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313160853937.png?imageSlim" alt="image-20250313160853847" style="zoom: 33%;" /> 
+<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313160853937.png?imageSlim" alt="image-20250313160853847" style="zoom: 33%;" />
+
+![image-20260331101859514](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331101859514.png)
 
 #### 3、测试 Cloudflare 应用与转发应用是否正常访问
 
@@ -175,7 +195,7 @@ URL:host.lzcapp:需要转发的应用服务端口
 
 ## 4、测试访问
 
-- 分别在手机端、电脑端、命令行端输入 alist.wabby.xyz，都能正常访问了
+- 分别在手机端、电脑端、命令行端输入 alist.wabby.xyz（测试时输入自己定义的主机名），都能正常访问了
 
 <img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313170458825.png?imageSlim" alt="image-20250313170458661" style="zoom: 33%;" /> 
 
