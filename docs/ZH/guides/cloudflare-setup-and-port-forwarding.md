@@ -12,9 +12,9 @@
 
 - 在微服上打开应用商店——> 下载 CloudFlared UI 并打开——> 点击右上角切换语言“中文简体”——>进行网站登录
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313092316870.png?imageSlim" alt="image-20250313092316818" style="zoom: 33%;" />  
+  ![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/ecafb15f-0546-418c-ad89-b517c0d3c617.png "image.png")
 
-- 这里会出现 CloudFlare 的登录页面——> 点击右上角切换语言“中文简体”——> 这里有 CloudFlare 账号就登录，没有需要注册一个
+- 通过网站进入到CloudFlare 的登录页面——> 点击右上角切换语言“中文简体”——> 这里有 CloudFlare 账号就登录，没有需要注册一个
 
 <img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313092502039.png?imageSlim" alt="image-20250313092501950" style="zoom: 33%;" />  
 
@@ -48,17 +48,15 @@
 
 - 回到您注册域名的平台（比如阿里云腾讯云等这里展示阿里具体流程），找到域名管理界面——> 修改注册资料——> 把 DNS 服务器换成上一步复制的域名——> 确定提交
 
-![image-20260331094933073](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331094933073.png)
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/99b9210f-c199-4744-8b2b-1c47d259b922.png "image.png")
 
- ![image-20260331095026358](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331095026358.png)
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/d59b9a25-da0b-41ad-b74b-2352325cca03.png "image.png")
 
-![image-20260331095106389](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331095106389.png)
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/46f9aa33-c1be-4ec8-9daa-66a4a3dfcfa5.png "image.png")
 
-![image-20260331095154800](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331095154800.png)
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/eb9760ec-2c40-4fd2-b5d0-af0250340e4b.png "image.png")
 
-![image-20260331095450163](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331095450163.png)
-
-![image-20260331095725836](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331095725836.png)
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/8f0c05c4-6e7e-44aa-a6d1-f66fe0bf69f5.png "image.png")
 
 ### 2、等待生效
 
@@ -75,7 +73,7 @@ nslookup -qt=ns 你的域名
 
 <img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313112407970.png?imageSlim" alt="image-20250313112407897" style="zoom:50%;" /> 
 
-![image-20260331100146130](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331100146130.png)
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/e30d6e29-7567-4e6d-943d-57784e634cbb.png "image.png")
 
 ### 3、托管完成
 
@@ -91,11 +89,11 @@ nslookup -qt=ns 你的域名
 
 - 在 Cloudflare 账户主页侧边导航栏打开“Zero Trust”
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313140851117.png?imageSlim" alt="image-20250313140851055" style="zoom:50%;" />  
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/afdcbcc0-40f9-41bc-9ea4-23043a2e8201.png "image.png")
 
 - 点击“网络”——> Tunnel——> 创建隧道
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313141058765.png?imageSlim" alt="image-20250313141058692" style="zoom:50%;" /> 
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/499f1df1-4b4a-4d75-b20a-4975805329ea.png "image.png") 
 
 - 隧道类型选择“Cloudflared”
 
@@ -103,27 +101,29 @@ nslookup -qt=ns 你的域名
 
 - 为隧道命名——> 保存隧道
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313141520534.png?imageSlim" alt="image-20250313141520466" style="zoom:50%;" /> 
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/38f2ca09-9b5f-4e71-839e-0dc9a26241ac.png "image.png")
 
 #### 2、连接隧道
 
 - 选择 Debin——> 复制左边“如果您的计算机上已安装 cloudflared：”内容
 
-![image-20260331100623780](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331100623780.png)
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/63008548-e826-464d-a721-03660478bed8.png "image.png")
 
-![image-20260331101146312](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331101146312.png)
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/27988af4-969d-47ac-bc98-6413fa54e1f9.png "image.png")
 
 - 粘贴到微服的这个窗口，点击保存——> 启动
 
-![image-20260331100846788](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331100846788.png)
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/2836dec1-e408-4de0-8001-bfaf50ee762e.png "image.png")
 
 - 再次点击侧边导航栏“Tunnel”可以看出隧道连接状态正常
 
-![image-20260331101421636](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331101421636.png)
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/616da8f7-4930-48e4-a80c-20c3010a8829.png "image.png")
 
-![image-20260331102112681](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331102112681.png)
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/3d6282b5-2a14-4532-91fd-16801887f76b.png "image.png")
 
-![image-20260331102533174](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331102533174.png)
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/17559db1-86f6-46e3-b463-4cd8c15714b8.png "image.png")
+
+`先完成配置应用的转发`
 
 ### 2、配置应用转发
 
@@ -150,9 +150,13 @@ nslookup -qt=ns 你的域名
 添加完成之后点击“测速连接”确保能正常——>创建
 ```
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313160853937.png?imageSlim" alt="image-20250313160853847" style="zoom: 33%;" />
+![PixPin_2026-03-31_11-49-49.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/5c9ea086-2909-4261-ba97-41489187b518.png "PixPin_2026-03-31_11-49-49.png")
 
-![image-20260331101859514](C:\Users\16269\AppData\Roaming\Typora\typora-user-images\image-20260331101859514.png)
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/d927a9f2-6c7c-47fe-ba71-f0092133e103.png "image.png")
+
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/7d62bcc0-7b82-4f69-b923-d19d6339f466.png "image.png")
+
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/28ebcf4f-18aa-4401-a9d6-b3c8fcec4a8c.png "image.png")
 
 #### 3、测试 Cloudflare 应用与转发应用是否正常访问
 
@@ -173,25 +177,11 @@ curl -I host.lzcapp:5244
 
 #### 1、添加公共主机名
 
-- 回到 cloudfalre 的 web 页面——> 点击隧道后面的“配置”
+- 回到 cloudfalre 的 web 页面——> 输入URL
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313164606608.png?imageSlim" alt="image-20250313164606533" style="zoom: 33%;" /> 
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/e7cfdef2-ad22-4c14-8207-2edece94d0ee.png "image.png")
 
-- 点击”已发布应用程序路由“——> 添加已发布应用程序路由
-
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/image-20251008123125863.png?imageSlim" alt="image-20251008123125863" style="zoom: 25%;" /> 
-
-#### 2、公共主机名配置
-
-```bash
-子域：可以自定义（一般写转发的应用名称）
-域：下拉复选需要的域名
-类型：HTTP
-URL:host.lzcapp:需要转发的应用服务端口
-最后保存主机名
-```
-
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313165105526.png?imageSlim" style="zoom:33%;" /> 
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/8660156b-0a71-4025-bebc-a3232d08a267.png "image.png")
 
 ## 4、测试访问
 
