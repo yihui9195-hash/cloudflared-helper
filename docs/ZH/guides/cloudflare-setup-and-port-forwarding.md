@@ -1,20 +1,20 @@
-# CloudFlare 配置指南和端口转发技巧
+# CloudFlare 配置指南和端口转发技巧（本攻略出现两个域名不影响您的正常使用）
 
 [TOC]
 
-> **需求背景：用户需把微服内的应用通过域名托管和端口转发的方式，实现公网访问微服内的应用，实现下图界面**
+> **需求背景：用户需把微服内的应用通过域名托管和端口转发的方式，实现公网访问微服内的应用，实现下图界面**（可通过自己的域名进行访问微服务内的应用）
 
 ![image-20250313172017688](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313172017827.png?imageSlim) 
 
 ## 具体实现
 
-## 1、登录 CloudFlare
+## 1、登录 CloudFlare（网址：https://www.cloudflare-cn.com/enterprise/（国内）(https://www.cloudflare.com/zh-cn/（国际））
 
-- 在微服上打开应用商店——> 下载 CloudFlared 并打开——> 点击右上角切换语言“中文简体”——> 点击底部“ZeroTrust 仪表盘”
+- 在微服上打开应用商店——> 下载 CloudFlared UI 并打开——> 点击右上角切换语言“中文简体”——>进行网站登录
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313092316870.png?imageSlim" alt="image-20250313092316818" style="zoom: 33%;" />  
+  ![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/ecafb15f-0546-418c-ad89-b517c0d3c617.png "image.png")
 
-- 这里会出现 CloudFlare 的登录页面——> 点击右上角切换语言“中文简体”——> 这里有 CloudFlare 账号就登录，没有需要注册一个
+- 通过网站进入到CloudFlare 的登录页面——> 点击右上角切换语言“中文简体”——> 这里有 CloudFlare 账号就登录，没有需要注册一个
 
 <img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313092502039.png?imageSlim" alt="image-20250313092501950" style="zoom: 33%;" />  
 
@@ -46,11 +46,17 @@
 
 <img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313101515942.png?imageSlim" alt="image-20250313101515836" style="zoom: 33%;" />  
 
-- 回到您注册域名的平台，找到域名管理界面——> 修改注册资料——> 把 DNS 服务器换成上一步复制的域名——> 确定提交
+- 回到您注册域名的平台（比如阿里云腾讯云等这里展示阿里具体流程），找到域名管理界面——> 修改注册资料——> 把 DNS 服务器换成上一步复制的域名——> 确定提交
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313101950671.png?imageSlim" alt="image-20250313101950604" style="zoom: 33%;" /> 
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/99b9210f-c199-4744-8b2b-1c47d259b922.png "image.png")
 
- 
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/d59b9a25-da0b-41ad-b74b-2352325cca03.png "image.png")
+
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/46f9aa33-c1be-4ec8-9daa-66a4a3dfcfa5.png "image.png")
+
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/eb9760ec-2c40-4fd2-b5d0-af0250340e4b.png "image.png")
+
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/8f0c05c4-6e7e-44aa-a6d1-f66fe0bf69f5.png "image.png")
 
 ### 2、等待生效
 
@@ -61,9 +67,13 @@
 dig NS 域名
 #如果一直出不来可以更换一下主机的DNS;如：223.5.5.5；8.8.8.8等
 #在ANSWER SECTION处产生新配的DNS就证明成功了
+#在Windows上
+nslookup -qt=ns 你的域名
 ```
 
 <img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313112407970.png?imageSlim" alt="image-20250313112407897" style="zoom:50%;" /> 
+
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/e30d6e29-7567-4e6d-943d-57784e634cbb.png "image.png")
 
 ### 3、托管完成
 
@@ -79,11 +89,11 @@ dig NS 域名
 
 - 在 Cloudflare 账户主页侧边导航栏打开“Zero Trust”
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313140851117.png?imageSlim" alt="image-20250313140851055" style="zoom:50%;" />  
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/afdcbcc0-40f9-41bc-9ea4-23043a2e8201.png "image.png")
 
 - 点击“网络”——> Tunnel——> 创建隧道
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313141058765.png?imageSlim" alt="image-20250313141058692" style="zoom:50%;" /> 
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/499f1df1-4b4a-4d75-b20a-4975805329ea.png "image.png") 
 
 - 隧道类型选择“Cloudflared”
 
@@ -91,48 +101,55 @@ dig NS 域名
 
 - 为隧道命名——> 保存隧道
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313141520534.png?imageSlim" alt="image-20250313141520466" style="zoom:50%;" /> 
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/38f2ca09-9b5f-4e71-839e-0dc9a26241ac.png "image.png")
 
 #### 2、连接隧道
 
 - 选择 Debin——> 复制左边“如果您的计算机上已安装 cloudflared：”内容
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313142835007.png?imageSlim" alt="image-20250313142834917" style="zoom:50%;" /> 
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/63008548-e826-464d-a721-03660478bed8.png "image.png")
+
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/12057a8c-abcd-4077-a0c7-82c1bc60178e.png "image.png")
 
 - 粘贴到微服的这个窗口，点击保存——> 启动
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313142901240.png?imageSlim" alt="image-20250313142901177" style="zoom:50%;" /> 
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/f861a3c9-c3d9-460e-a53c-b83fa7fce1af.png "image.png")
 
 - 再次点击侧边导航栏“Tunnel”可以看出隧道连接状态正常
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313143255411.png?imageSlim" alt="image-20250313143255321" style="zoom:50%;" /> 
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/616da8f7-4930-48e4-a80c-20c3010a8829.png "image.png")
+
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/3d6282b5-2a14-4532-91fd-16801887f76b.png "image.png")
+
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/17559db1-86f6-46e3-b463-4cd8c15714b8.png "image.png")
+
+`先完成配置应用的转发`
 
 ### 2、配置应用转发
 
-#### 1、获取应用端口
-
-下拉端口就可以获取了
-
-![a6aace8f82bbd2374a77235eb09ca5bb](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/202506261623480.png)
-
-#### 2、配置转发
+#### 1、获取应用端口配置转发
 
 - 打开微服——> 下载“局域网端口转发工具”应用“——> 打开——> 添加映射规则——> 开始填写
 - **（需注意！！！一个应用包含前端后端等其他组件，用户需要选择需要映射出去的服务端口）**
 
 ```ABAP
 注意事项：
-左侧：
-局域网出口类型：选择“微服虚拟网卡（仅微服应用容器内可访问）”
-微服虚拟网卡：“host.lzcapp” 端口：尽量与需要映射的端口一致
 右侧：
+局域网出口类型：选择“微服虚拟网卡（仅微服应用容器内可访问）”
+微服虚拟网卡：“host.lzcapp”
+出口地址：默认
+端口：尽量与需要映射的端口一致
 转发目标类型：微服应用
 微服应用：选择需要映射的应用（这一有个注意点：这个下拉应用选项中需要选Running的）server tcp 端口（这三个根据自身服务来）
 
 添加完成之后点击“测速连接”确保能正常——>创建
 ```
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313160853937.png?imageSlim" alt="image-20250313160853847" style="zoom: 33%;" /> 
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/e367025e-94ff-4cb5-8c50-1352168298e6.png "image.png")
+
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/1729a2a5-7a7d-4fa6-bf48-7c28f4aed89a.png "image.png")
+
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/f14b8565-4fb0-4090-b365-acc08baa2e2e.png "image.png")
 
 #### 3、测试 Cloudflare 应用与转发应用是否正常访问
 
@@ -153,29 +170,15 @@ curl -I host.lzcapp:5244
 
 #### 1、添加公共主机名
 
-- 回到 cloudfalre 的 web 页面——> 点击隧道后面的“配置”
+- 回到 cloudfalre 的 web 页面——> 输入URL
 
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313164606608.png?imageSlim" alt="image-20250313164606533" style="zoom: 33%;" /> 
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/e7cfdef2-ad22-4c14-8207-2edece94d0ee.png "image.png")
 
-- 点击”已发布应用程序路由“——> 添加已发布应用程序路由
-
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/image-20251008123125863.png?imageSlim" alt="image-20251008123125863" style="zoom: 25%;" /> 
-
-#### 2、公共主机名配置
-
-```bash
-子域：可以自定义（一般写转发的应用名称）
-域：下拉复选需要的域名
-类型：HTTP
-URL:host.lzcapp:需要转发的应用服务端口
-最后保存主机名
-```
-
-<img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313165105526.png?imageSlim" style="zoom:33%;" /> 
+![image.png](https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/1290/8660156b-0a71-4025-bebc-a3232d08a267.png "image.png")
 
 ## 4、测试访问
 
-- 分别在手机端、电脑端、命令行端输入 alist.wabby.xyz，都能正常访问了
+- 分别在手机端、电脑端、命令行端输入 alist.wabby.xyz（测试时输入自己定义的主机名），都能正常访问了
 
 <img src="https://lzc-playground-1301583638.cos.ap-chengdu.myqcloud.com/guidelines/395/20250313170458825.png?imageSlim" alt="image-20250313170458661" style="zoom: 33%;" /> 
 
